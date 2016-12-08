@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Введите a"
+                android:textSize="40sp"
+                android:layout_weight="1"/>
+            <EditText
+                android:id="@+id/edit_a"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="a"
+                android:inputType="numberSigned"
+                android:textSize="40sp"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Введите b"
+                android:textSize="40sp"
+                android:layout_weight="1"/>
+            <EditText
+                android:id="@+id/edit_b"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="b"
+                android:inputType="numberSigned"
+                android:textSize="40sp"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Введите c"
+                android:textSize="40sp"
+                android:layout_weight="1"/>
+            <EditText
+                android:id="@+id/edit_c"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="c"
+                android:inputType="numberSigned"
+                android:textSize="40sp"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center">
+        <Button
+            android:id="@+id/SolBtn"
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:text="Solution"
+            android:textSize="40sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/answer_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Ответ:"
+            android:textSize="30sp" />
+    </LinearLayout>
+
+</LinearLayout>
