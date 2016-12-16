@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TrainOfMath</string>
+    <string name="level_1">Level 1</string>
+    <string name="level_2">Level 2</string>
+    <string name="level_3">Level 3</string>
+    <string name="you_right">You right</string>
+    <string name="your_false">You false</string>
+    <string name="try_again">Try Again</string>
+</resources>
