@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">KotlinAPP</string>
+    <string name="restart_text">Repeat</string>
 </resources>
