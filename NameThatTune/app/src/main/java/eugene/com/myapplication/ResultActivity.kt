@@ -18,6 +18,7 @@ class ResultActivity : AppCompatActivity() {
     var status=0
     var CurrentPlayer=0
     var StatusAnswer=0
+    var Final=0
 
     var TextRound:TextView?=null
     var TextPoint:TextView?=null
@@ -59,6 +60,7 @@ class ResultActivity : AppCompatActivity() {
             if (CurrentPlayer==0) setIntPreferences(BetActivity.SHARED_POINT_PLAYER1,getIntPrefereces(BetActivity.SHARED_POINT_PLAYER1)+1)
             else  setIntPreferences(BetActivity.SHARED_POINT_PLAYER2,getIntPrefereces(BetActivity.SHARED_POINT_PLAYER2)+1)
             setIntPreferences(SHARED_ROUND,round+1)
+            if (round==5) Final=1
             UpdateAll()
             intent= Intent(applicationContext,BetActivity::class.java)
         }
@@ -74,16 +76,18 @@ class ResultActivity : AppCompatActivity() {
                 ImgResult!!.setImageDrawable((applicationContext.resources.getDrawable(R.drawable.frightened)))
                 TextResult!!.text="Никто не угадал"
                 UpdateAll()
+                if (round==5) Final=1
                 setIntPreferences(SHARED_ROUND,round+1)
                 intent= Intent(applicationContext,BetActivity::class.java)
 
             }
         BtnNext!!.setOnClickListener {
-            if (round==5) {
+            if (Final==1)
+            {
                 intent = Intent(applicationContext,FinishActivity::class.java)
                 startActivity(intent)
             }
-            startActivity(intent)
+            else startActivity(intent)
         }
 
 

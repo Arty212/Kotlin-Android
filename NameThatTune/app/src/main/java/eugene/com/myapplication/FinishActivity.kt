@@ -13,6 +13,7 @@ class FinishActivity : AppCompatActivity() {
     var ResultText:TextView?=null
     var RestartBtn:Button?=null
     var ExitBtn:Button?=null
+    var Final=0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,8 +27,8 @@ class FinishActivity : AppCompatActivity() {
         var PlayerName1=getStringPrefereces(DuetStartActivity.SHARED_NAME_PLAYER1)
         var PlayerName2=getStringPrefereces(DuetStartActivity.SHARED_NAME_PLAYER2)
 
-        var PointPlayer1=getStringPrefereces(BetActivity.SHARED_BET_PLAYER1)
-        var PointPlayer2=getStringPrefereces(BetActivity.SHARED_BET_PLAYER2)
+        var PointPlayer1=getIntPrefereces(BetActivity.SHARED_POINT_PLAYER1)
+        var PointPlayer2=getIntPrefereces(BetActivity.SHARED_POINT_PLAYER2)
 
         FinishPointText!!.text=PointPlayer1.toString()+":"+PointPlayer2.toString()
 

@@ -36,7 +36,6 @@ class GameActivity : AppCompatActivity() {
         public var SHARED_CURRENT_PLAYER="shared_current_player"
     }
 
-
     private var TextPoint:TextView?=null
     private var TextTime:TextView?=null
     private var TextName:TextView?=null
@@ -111,42 +110,42 @@ class GameActivity : AppCompatActivity() {
                     var intent= Intent(applicationContext,AnswerActivity::class.java)
                     startActivity(intent)
                 }
-
             },1000,1000)
-
         }
-
-
-
-
-
-
-
-
-    }
-
-
+   }
 
     private fun RandomCurrentMusic()
     {
-        var Str=getStringPrefereces(SHARED_SUCCES_MUSIC)
+        CurrentMusic=getRandomInt(MIN,MAX)
+       /* var Str=getStringPrefereces(SHARED_SUCCES_MUSIC)
+
         if (Str.length>1)
         {
+            val st = StringTokenizer(Str, ",")
+            val savedList = IntArray(10)
+            for (i in 0..9) {
+                savedList[i] = Integer.parseInt(st.nextToken())
+            }
+
             var parts=Str.split(",")
             var ok=0;
             var flag=0;
             while(flag==0){
                 CurrentMusic=getRandomInt(MIN,MAX)
-                for( part in parts) {
-                    if (CurrentMusic==part.toInt())
-                        ok++
-                }
+                for (i in 0..9)
+                    if (CurrentMusic==savedList[i])
+                           ok++
+                //for( part in parts) {
+                 //   if (CurrentMusic==part.toInt())
+                //        ok++
+                //}
                 if (ok==0) flag++;
             }
         }
         else CurrentMusic=getRandomInt(MIN,MAX)
         Str=Str+","+CurrentMusic.toString()
         setStringPreferences(SHARED_SUCCES_MUSIC,Str)
+        */
         MakeMPplayer(CurrentMusic)
 
     }

@@ -13,15 +13,16 @@ import org.w3c.dom.Text
 
 class BetActivity : AppCompatActivity() {
 
-    companion object{
-        public val SHARED_NAME_PLAYER1= "shared_name_player1"
-        public val SHARED_NAME_PLAYER2= "shared_name_player2"
-        public val SHARED_KEY="shared_key"
-        public val SHARED_BET_PLAYER1="shared_bet_player1"
-        public val SHARED_POINT_PLAYER1="shared_point_player1"
-        public val SHARED_POINT_PLAYER2="shared_point_player2"
-        public val SHARED_BET_PLAYER2="shared_bet_player2"
+    companion object {
+        public val SHARED_NAME_PLAYER1 = "shared_name_player1"
+        public val SHARED_NAME_PLAYER2 = "shared_name_player2"
+        public val SHARED_KEY = "shared_key"
+        public val SHARED_BET_PLAYER1 = "shared_bet_player1"
+        public val SHARED_POINT_PLAYER1 = "shared_point_player1"
+        public val SHARED_POINT_PLAYER2 = "shared_point_player2"
+        public val SHARED_BET_PLAYER2 = "shared_bet_player2"
     }
+
     var k=0;
 
     var NamePlayer1=""
@@ -32,7 +33,6 @@ class BetActivity : AppCompatActivity() {
 
     var readyPl1=0
     var readyPl2=0
-    
 
     private var BetCurrentPlayer:TextView? =null
     private var CurrentBet:TextView? =null
@@ -73,8 +73,6 @@ class BetActivity : AppCompatActivity() {
         ReadyImgPlayer1!!.setBackgroundResource(R.drawable.not_ready)
         ReadyImgPlayer2!!.setBackgroundResource(R.drawable.not_ready)
 
-
-
         var DoBetBtn=findViewById(R.id.do_bet) as Button
         var StartGame=findViewById(R.id.go_game) as Button
 
@@ -90,8 +88,6 @@ class BetActivity : AppCompatActivity() {
             Player1()
         else
             Player2()
-
-
 
         Sec3Btn!!.setOnClickListener {
                 current_bet = 3
@@ -177,26 +173,9 @@ class BetActivity : AppCompatActivity() {
                         }
                     }
                 }
-
-
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
+
     public fun setIntPreferences(key:String,bet:Int) {
         val sh = getSharedPreferences(DuetStartActivity.SHARED_KEY, Context.MODE_PRIVATE)
         val editor = sh.edit()
@@ -211,7 +190,6 @@ class BetActivity : AppCompatActivity() {
         val sh=getSharedPreferences(DuetStartActivity.SHARED_KEY, Context.MODE_PRIVATE)
         return sh.getInt(key,def)
     }
-
 
     public fun setStringPreferences(key:String,name:String) {
         val sh = getSharedPreferences(DuetStartActivity.SHARED_KEY, Context.MODE_PRIVATE)
