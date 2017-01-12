@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_bet"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    android:background="@drawable/bet_background">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Текущий счёт"
+            android:textSize="20sp"
+            android:textColor="#EDE7F6"
+            android:layout_weight="2"/>
+
+        <TextView
+            android:id="@+id/text_point"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="0:0"
+            android:textColor="#EDE7F6"
+            android:textSize="20sp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="2">
+        <TextView
+            android:id="@+id/ready_player1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:textSize="20sp"
+            android:text="Арсений"
+            android:gravity="center"
+            android:textColor="#EDE7F6"/>
+        <ImageView
+            android:id="@+id/ready_img_player1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/ready"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/ready_player2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:textSize="20sp"
+            android:text="Владимир"
+            android:gravity="center"
+            android:textColor="#EDE7F6"/>
+
+        <ImageView
+            android:id="@+id/ready_img_player2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/ready"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/bet_name_player"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textColor="#EDE7F6"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/current_bet"
+            android:textColor="#EDE7F6"
+            android:textSize="20sp"
+            android:layout_weight="2"/>
+        <TextView
+            android:id="@+id/current_bet"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="#EDE7F6"
+            android:text="3"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/i_guess"
+            android:gravity="center"
+            android:textColor="#EDE7F6"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/sec3_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="3"
+                android:layout_weight="1"/>
+            <Button
+                android:id="@+id/sec5_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="5"
+                android:layout_weight="1"/>
+            <Button
+                android:id="@+id/sec7_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="7"
+                android:layout_weight="1"/>
+            <Button
+                android:id="@+id/sec9_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="9"
+                android:layout_weight="1"/>
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/second"
+            android:gravity="center"
+            android:textColor="#EDE7F6"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/do_bet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Сделать ставку!"/>
+    <Button
+        android:id="@+id/go_game"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Начать игру"/>
+
+</LinearLayout>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bet_background">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="2">
+            <TextView
+                android:id="@+id/text_point"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="0:0"
+                android:textColor="#EDE7F6"
+                android:textSize="20sp"
+                android:layout_weight="2"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:layout_marginLeft="15dp"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="2">
+                    <TextView
+                        android:id="@+id/ready_player1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:textSize="20sp"
+                        android:text="Арсений"
+                        android:gravity="center"
+                        android:textColor="#EDE7F6"/>
+                    <ImageView
+                        android:id="@+id/ready_img_player1"
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/ready"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/ready_player2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:textSize="20sp"
+                        android:text="Владимир"
+                        android:gravity="center"
+                        android:textColor="#EDE7F6"/>
+
+                    <ImageView
+                        android:layout_marginLeft="20dp"
+                        android:id="@+id/ready_img_player2"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/ready"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/do_bet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Сделать ставку!"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/go_game"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Начать игру"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1">
+        <TextView
+            android:id="@+id/bet_name_player"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Игрок делает ставку"
+            android:gravity="center"
+            android:textColor="#EDE7F6" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Текущая ставка"
+                android:textColor="#EDE7F6"
+                android:gravity="center" />
+            <TextView
+                android:id="@+id/current_bet"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="#EDE7F6"
+                android:text="3"
+                android:layout_marginLeft="20dp"
+                android:gravity="center"/>
+        </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Я угадаю мелодию за ... секунд"
+                android:gravity="center"
+                android:textColor="#EDE7F6"
+                android:layout_weight="1"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/sec3_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="3"
+                    android:layout_weight="1"/>
+                <Button
+                    android:id="@+id/sec5_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="5"
+                    android:layout_weight="1"/>
+                <Button
+                    android:id="@+id/sec7_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="7"
+                    android:layout_weight="1"/>
+                <Button
+                    android:id="@+id/sec9_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="9"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

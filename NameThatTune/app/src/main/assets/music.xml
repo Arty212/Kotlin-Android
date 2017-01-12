@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<Game>
+    <Music>
+        <id>1</id>
+        <id_android>R.raw.eminem_lose_yourself</id_android>
+        <autor>Eminem</autor>
+        <name>Lose yourself</name>
+    </Music>
+    <Music>
+        <id>2</id>
+        <id_android>R.raw.abba_happy_new_year</id_android>
+        <autor>Abba</autor>
+        <name>Happy New Year</name>
+    </Music>
+    <Music>
+        <id>3</id>
+        <id_android>R.raw.elka_okolo_tebya</id_android>
+        <autor>Ёлка</autor>
+        <name>Около тебя</name>
+    </Music>
+    <Music>
+        <id>4</id>
+        <id_android>R.raw.iowa_ulibaysya</id_android>
+        <autor>IOWA</autor>
+        <name>Улыбайся</name>
+    </Music>
+    <Music>
+        <id>5</id>
+        <id_android>R.raw.leningrad_eksponat</id_android>
+        <autor>Ленинград</autor>
+        <name>Экспонат</name>
+    </Music>
+    <Music>
+        <id>6</id>
+        <id_android>R.raw.zveri_rayoni_kvartali</id_android>
+        <autor>Звери</autor>
+        <name>Районы</name>
+    </Music>
+    <Music>
+        <id>7</id>
+        <id_android>R.raw.beatles_yesterday</id_android>
+        <autor>Beatles</autor>
+    <name>Yesterday</name>
+    </Music>
+    <Music>
+        <id>8</id>
+        <id_android>R.raw.iuriy_nikulin_esli_b_ya_bil_sultan</id_android>
+        <autor>Юрий Никулин</autor>
+        <name>Если б я был султан...</name>
+    </Music>
+
+</Game>
