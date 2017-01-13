@@ -4,9 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageButton
 import android.widget.ImageView
 
 class DuetStartActivity : AppCompatActivity() {
@@ -47,8 +45,4 @@ class DuetStartActivity : AppCompatActivity() {
         editor.apply()
     }
 
-    private  fun getStringPrefereces(key:String):String{
-        val sh=getSharedPreferences(SHARED_KEY,Context.MODE_PRIVATE)
-        return sh.getString(key,"0")
-    }
 }

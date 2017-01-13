@@ -19,6 +19,7 @@ class ResultActivity : AppCompatActivity() {
     var CurrentPlayer=0
     var StatusAnswer=0
     var Final=0
+    var FlagResult=0
 
     var TextRound:TextView?=null
     var TextPoint:TextView?=null
@@ -57,37 +58,42 @@ class ResultActivity : AppCompatActivity() {
         if (StatusAnswer==1) {
             ImgResult!!.setImageDrawable((applicationContext.resources.getDrawable(R.drawable.smile)))
             TextResult!!.text="Вы выиграли раунд"
-            if (CurrentPlayer==0) setIntPreferences(BetActivity.SHARED_POINT_PLAYER1,getIntPrefereces(BetActivity.SHARED_POINT_PLAYER1)+1)
-            else  setIntPreferences(BetActivity.SHARED_POINT_PLAYER2,getIntPrefereces(BetActivity.SHARED_POINT_PLAYER2)+1)
-            setIntPreferences(SHARED_ROUND,round+1)
-            if (round==5) Final=1
-            UpdateAll()
-            intent= Intent(applicationContext,BetActivity::class.java)
+            FlagResult=1
         }
         else
             if (status==0){
                 ImgResult!!.setImageDrawable((applicationContext.resources.getDrawable(R.drawable.sad)))
                 TextResult!!.text="Вы не угадали. Ход переходит сопернику!"
-                status=1;
-                setIntPreferences(GameActivity.SHARED_STATUS,status)
-                intent= Intent(applicationContext,GameActivity::class.java)
             }
             else {
                 ImgResult!!.setImageDrawable((applicationContext.resources.getDrawable(R.drawable.frightened)))
                 TextResult!!.text="Никто не угадал"
-                UpdateAll()
-                if (round==5) Final=1
-                setIntPreferences(SHARED_ROUND,round+1)
-                intent= Intent(applicationContext,BetActivity::class.java)
+                FlagResult=1
 
             }
         BtnNext!!.setOnClickListener {
-            if (Final==1)
-            {
-                intent = Intent(applicationContext,FinishActivity::class.java)
-                startActivity(intent)
+            if (FlagResult==1) {
+                if (StatusAnswer==1){
+                    if (CurrentPlayer==0) setIntPreferences(BetActivity.SHARED_POINT_PLAYER1,getIntPrefereces(BetActivity.SHARED_POINT_PLAYER1)+1)
+                    else  setIntPreferences(BetActivity.SHARED_POINT_PLAYER2,getIntPrefereces(BetActivity.SHARED_POINT_PLAYER2)+1)
+                }
+                setIntPreferences(SHARED_ROUND, round + 1)
+                UpdateAll()
+                if (round==5){
+                    intent = Intent(applicationContext,FinishActivity::class.java)
+                    startActivity(intent)
+                }
+                else {
+                    intent= Intent(applicationContext,BetActivity::class.java)
+                    startActivity(intent)
+                }
             }
-            else startActivity(intent)
+            else if (FlagResult==0) {
+                    status=1;
+                    setIntPreferences(GameActivity.SHARED_STATUS,status)
+                    intent= Intent(applicationContext,GameActivity::class.java)
+                    startActivity(intent)
+                }
         }
 
 
@@ -131,4 +137,6 @@ class ResultActivity : AppCompatActivity() {
         val sh=getSharedPreferences(DuetStartActivity.SHARED_KEY, Context.MODE_PRIVATE)
         return sh.getInt(key,def)
     }
+
+
 }

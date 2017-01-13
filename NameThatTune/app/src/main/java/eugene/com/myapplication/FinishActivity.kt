@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import kotlin.system.exitProcess
 
 class FinishActivity : AppCompatActivity() {
 
@@ -36,7 +37,7 @@ class FinishActivity : AppCompatActivity() {
             ResultText!!.text="Выиграл игрок "+PlayerName1
         }
         else if (PointPlayer2>PointPlayer1){
-                    ResultText!!.text="Выиграл игрок "+PlayerName1
+                    ResultText!!.text="Выиграл игрок "+PlayerName2
             }
             else ResultText!!.text="Ничья!"
 
@@ -46,7 +47,7 @@ class FinishActivity : AppCompatActivity() {
         }
 
         ExitBtn!!.setOnClickListener {
-            finish()
+            exitProcess(0)
         }
 
 

@@ -6,7 +6,6 @@ import android.media.MediaPlayer
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
 import java.util.*
 import kotlin.concurrent.timerTask
@@ -60,6 +59,10 @@ class GameActivity : AppCompatActivity() {
         var PlayerName1=getStringPrefereces(BetActivity.SHARED_NAME_PLAYER1)
         var PlayerName2=getStringPrefereces(BetActivity.SHARED_NAME_PLAYER2)
 
+        var round=getIntPrefereces(ResultActivity.SHARED_ROUND)
+        var actionBar = supportActionBar
+        actionBar!!.setSubtitle("Раунд " + round+"/5")
+
         TextPoint!!.text=PointPlayer1.toString()+":"+PointPlayer2.toString()
 
         status=getIntPrefereces(SHARED_STATUS)
@@ -75,20 +78,21 @@ class GameActivity : AppCompatActivity() {
             RandomCurrentMusic()
             setIntPreferences(SHARED_CURRENT_MUSIC,CurrentMusic)
         }
-        else {
-            CurrentPlayer=getIntPrefereces(SHARED_CURRENT_PLAYER)
-            if (CurrentPlayer==1) {
-                CurrentPlayer=0
-                MinBet=getIntPrefereces(BetActivity.SHARED_BET_PLAYER1)
+        else
+            {
+                CurrentPlayer=getIntPrefereces(SHARED_CURRENT_PLAYER)
+                if (CurrentPlayer==1) {
+                    CurrentPlayer=0
+                    MinBet=getIntPrefereces(BetActivity.SHARED_BET_PLAYER1)
+                }
+                else {
+                    CurrentPlayer=1
+                    MinBet=getIntPrefereces(BetActivity.SHARED_BET_PLAYER2)
+                }
+                setIntPreferences(SHARED_CURRENT_PLAYER,CurrentPlayer)
+                CurrentMusic=getIntPrefereces(SHARED_CURRENT_MUSIC)
+                MakeMPplayer(CurrentMusic)
             }
-            else {
-                CurrentPlayer=1
-                MinBet=getIntPrefereces(BetActivity.SHARED_BET_PLAYER1)
-            }
-            setIntPreferences(SHARED_CURRENT_PLAYER,CurrentPlayer)
-            CurrentMusic=getIntPrefereces(SHARED_CURRENT_MUSIC)
-            MakeMPplayer(CurrentMusic)
-        }
 
         if (CurrentPlayer==0) TextName!!.text="Игрок "+PlayerName1.toString()+" слушает"
         else  TextName!!.text="Игрок "+PlayerName2.toString()+" слушает"
@@ -116,38 +120,28 @@ class GameActivity : AppCompatActivity() {
 
     private fun RandomCurrentMusic()
     {
-        CurrentMusic=getRandomInt(MIN,MAX)
-       /* var Str=getStringPrefereces(SHARED_SUCCES_MUSIC)
-
-        if (Str.length>1)
-        {
-            val st = StringTokenizer(Str, ",")
-            val savedList = IntArray(10)
-            for (i in 0..9) {
-                savedList[i] = Integer.parseInt(st.nextToken())
+        var Str=getStringPrefereces(SHARED_SUCCES_MUSIC)
+        if (Str.length>1) {
+            var parts = Str.split(",")
+            var flag = 0;
+            while (flag == 0) {
+                CurrentMusic = getRandomInt(MIN, MAX)
+                var ok = 0
+                for (part in parts) {
+                    if (CurrentMusic == part.toInt())
+                        ok++;
+                }
+                if (ok == 0) flag++;
             }
-
-            var parts=Str.split(",")
-            var ok=0;
-            var flag=0;
-            while(flag==0){
-                CurrentMusic=getRandomInt(MIN,MAX)
-                for (i in 0..9)
-                    if (CurrentMusic==savedList[i])
-                           ok++
-                //for( part in parts) {
-                 //   if (CurrentMusic==part.toInt())
-                //        ok++
-                //}
-                if (ok==0) flag++;
-            }
+            Str = Str + "," + CurrentMusic.toString()
+            setStringPreferences(SHARED_SUCCES_MUSIC, Str)
         }
-        else CurrentMusic=getRandomInt(MIN,MAX)
-        Str=Str+","+CurrentMusic.toString()
-        setStringPreferences(SHARED_SUCCES_MUSIC,Str)
-        */
+        else {
+            CurrentMusic = getRandomInt(MIN, MAX)
+            Str = Str + "," + CurrentMusic.toString()
+            setStringPreferences(SHARED_SUCCES_MUSIC, Str)
+        }
         MakeMPplayer(CurrentMusic)
-
     }
 
     fun MakeMPplayer(CurrentMus:Int){

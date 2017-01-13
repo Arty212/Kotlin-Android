@@ -2,21 +2,17 @@ package eugene.com.myapplication
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.Drawable
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import org.w3c.dom.Text
 
 class BetActivity : AppCompatActivity() {
 
     companion object {
         public val SHARED_NAME_PLAYER1 = "shared_name_player1"
         public val SHARED_NAME_PLAYER2 = "shared_name_player2"
-        public val SHARED_KEY = "shared_key"
         public val SHARED_BET_PLAYER1 = "shared_bet_player1"
         public val SHARED_POINT_PLAYER1 = "shared_point_player1"
         public val SHARED_POINT_PLAYER2 = "shared_point_player2"
@@ -49,11 +45,13 @@ class BetActivity : AppCompatActivity() {
     private var Sec7Btn:Button?=null
     private var Sec9Btn:Button?=null
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bet)
+
+        var round=getIntPrefereces(ResultActivity.SHARED_ROUND)
+        var actionBar = supportActionBar
+        actionBar!!.setSubtitle("Раунд " + round+"/5")
 
         NamePlayer1=getStringPrefereces(SHARED_NAME_PLAYER1)
         NamePlayer2=getStringPrefereces(SHARED_NAME_PLAYER2)
@@ -135,7 +133,6 @@ class BetActivity : AppCompatActivity() {
                     if (readyPl2 != 1) Player2()
                 }
             }
-
         }
 
         StartGame.setOnClickListener {
@@ -189,13 +186,6 @@ class BetActivity : AppCompatActivity() {
             def=0
         val sh=getSharedPreferences(DuetStartActivity.SHARED_KEY, Context.MODE_PRIVATE)
         return sh.getInt(key,def)
-    }
-
-    public fun setStringPreferences(key:String,name:String) {
-        val sh = getSharedPreferences(DuetStartActivity.SHARED_KEY, Context.MODE_PRIVATE)
-        val editor = sh.edit()
-        editor.putString(key, name)
-        editor.apply()
     }
 
     public fun getStringPrefereces(key:String):String{

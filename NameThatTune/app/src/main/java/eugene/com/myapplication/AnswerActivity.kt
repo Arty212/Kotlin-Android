@@ -11,15 +11,10 @@ import android.widget.TextView
 class AnswerActivity : AppCompatActivity() {
 
     companion object{
-        public var SHARED_VAR1="shared_var3"
+        public var SHARED_VAR1="shared_var1"
         public var SHARED_VAR2="shared_var2"
         public var SHARED_VAR3="shared_var3"
         public var SHARED_ANSWER_STATUS="shared_answer_status"
-        public var Var1_Key="key_var1"
-        public var Var2_Key="key_var2"
-        public var Var3_Key="key_var3"
-        public var Flag_Key="key_flag"
-
     }
 
     private var Btn1Player: Button? = null
@@ -29,9 +24,6 @@ class AnswerActivity : AppCompatActivity() {
 
     private var TextNamePlayer:TextView? = null
 
-    val MIN=0
-    val MAX=9
-
     var randBtn1=0
     var randBtn2=0
     var randBtn3=0
@@ -40,8 +32,6 @@ class AnswerActivity : AppCompatActivity() {
     var VarMusic1=0;
     var VarMusic2=0;
     var VarMusic3=0;
-
-    //var Flag=0;
 
     var status=0
 
@@ -60,26 +50,27 @@ class AnswerActivity : AppCompatActivity() {
         Btn4Player=findViewById(R.id.answer_player1_btn4) as Button
         TextNamePlayer=findViewById(R.id.text_current_player) as TextView
 
+        var round=getIntPrefereces(ResultActivity.SHARED_ROUND)
+        var actionBar = supportActionBar
+        actionBar!!.setSubtitle("Раунд " + round+"/5")
+
         CurrentPlayer=getIntPrefereces(GameActivity.SHARED_CURRENT_PLAYER)
         if (CurrentPlayer==0) TextNamePlayer!!.text="Игрок "+getStringPrefereces(DuetStartActivity.SHARED_NAME_PLAYER1)+" отвечает"
         else  TextNamePlayer!!.text="Игрок "+getStringPrefereces(DuetStartActivity.SHARED_NAME_PLAYER2)+" отвечает"
 
         status=getIntPrefereces(GameActivity.SHARED_STATUS)
 
+
+        CurrentMusic=getIntPrefereces(GameActivity.SHARED_CURRENT_MUSIC)
+
         if (status==0)
         {
-            //if (savedInstanceState != null) {
-               // Flag=savedInstanceState.getInt(Flag_Key)
-              //  if (Flag==0)
-                    RandomVersusMusic()
-               // else{
-                //    VarMusic1=savedInstanceState.getInt(Var1_Key)
-               //     VarMusic2=savedInstanceState.getInt(Var2_Key)
-               //     VarMusic3=savedInstanceState.getInt(Var3_Key)
-               /// }
-           // }
+            RandomVersusMusic()
+            setIntPreferences(SHARED_VAR1,VarMusic1)
+            setIntPreferences(SHARED_VAR2,VarMusic2)
+            setIntPreferences(SHARED_VAR3,VarMusic3)
         }
-        else if (status==1){
+        else{
             VarMusic1=getIntPrefereces(SHARED_VAR1)
             VarMusic2=getIntPrefereces(SHARED_VAR2)
             VarMusic3=getIntPrefereces(SHARED_VAR3)
@@ -119,30 +110,30 @@ class AnswerActivity : AppCompatActivity() {
         var flag3=0
         var flag4=0
 
-        CurrentMusic=getIntPrefereces(GameActivity.SHARED_CURRENT_MUSIC)
-
         randBtn1=getRandomInt(1,5)
-        ChooseBtn(randBtn1,CurrentMusic)
 
         while(flag2==0){
             randBtn2=getRandomInt(1,5)
             if (randBtn2!=randBtn1)
                 flag2=1
         }
-        ChooseBtn(randBtn2,VarMusic1)
+
 
         while(flag3==0){
             randBtn3=getRandomInt(1,5)
             if ((randBtn3!=randBtn1)&&(randBtn3!=randBtn2))
                     flag3=1
         }
-        ChooseBtn(randBtn3,VarMusic2)
+
 
         while(flag4==0){
             randBtn4=getRandomInt(1,5)
             if ((randBtn4!=randBtn1)&&(randBtn4!=randBtn2)&&(randBtn4!=randBtn3))
                         flag4=1
         }
+        ChooseBtn(randBtn1,CurrentMusic)
+        ChooseBtn(randBtn2,VarMusic1)
+        ChooseBtn(randBtn3,VarMusic2)
         ChooseBtn(randBtn4,VarMusic3)
     }
 
@@ -207,9 +198,6 @@ class AnswerActivity : AppCompatActivity() {
                     if (VarMusic3!=VarMusic2)
                         flag3=1;
         }
-        setIntPreferences(SHARED_VAR1,VarMusic1)
-        setIntPreferences(SHARED_VAR2,VarMusic2)
-        setIntPreferences(SHARED_VAR3,VarMusic3)
     }
 
     fun getRandomInt(min:Int, max:Int):Int {
@@ -240,15 +228,5 @@ class AnswerActivity : AppCompatActivity() {
         return sh.getInt(key,0)
     }
 
-   /* override fun onSaveInstanceState(outState: Bundle?) {
-        super.onSaveInstanceState(outState)
-
-        if (outState != null) {
-            outState.putInt(Var1_Key,VarMusic1)
-            outState.putInt(Var2_Key,VarMusic2)
-            outState.putInt(Var3_Key,VarMusic3)
-            outState.putInt(Flag_Key,Flag+1)
-        }
-    }*/
 
 }

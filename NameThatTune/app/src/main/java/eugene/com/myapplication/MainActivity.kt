@@ -5,7 +5,6 @@ import android.content.Intent
 import android.media.MediaPlayer
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ImageView
 
 class MainActivity : AppCompatActivity() {
@@ -16,7 +15,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
+
+        var actionBar = supportActionBar
+        actionBar!!.setSubtitle("Угадай мелодию")
 
         mpBackground=MediaPlayer.create(applicationContext,R.raw.backgroud_music)
         mpBackground.start()
@@ -53,21 +56,11 @@ class MainActivity : AppCompatActivity() {
         editor.apply()
     }
 
-    private  fun getStringPrefereces(key:String):String{
-        val sh=getSharedPreferences(DuetStartActivity.SHARED_KEY, Context.MODE_PRIVATE)
-        return sh.getString(key,"0")
-    }
-
     public fun setIntPreferences(key:String,bet:Int) {
         val sh = getSharedPreferences(DuetStartActivity.SHARED_KEY, Context.MODE_PRIVATE)
         val editor = sh.edit()
         editor.putInt(key, bet)
         editor.apply()
-    }
-
-    public  fun getIntPrefereces(key:String):Int{
-        val sh=getSharedPreferences(DuetStartActivity.SHARED_KEY, Context.MODE_PRIVATE)
-        return sh.getInt(key,0)
     }
 
     override fun onStop() {
