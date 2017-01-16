@@ -13,7 +13,6 @@ class FinishActivity : AppCompatActivity() {
     var FinishPointText:TextView?=null
     var ResultText:TextView?=null
     var RestartBtn:Button?=null
-    var ExitBtn:Button?=null
     var Final=0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +22,6 @@ class FinishActivity : AppCompatActivity() {
         FinishPointText=findViewById(R.id.finish_point_text) as TextView
         ResultText=findViewById(R.id.finish_text) as TextView
         RestartBtn=findViewById(R.id.restart_btn) as Button
-        ExitBtn=findViewById(R.id.exit_btn) as Button
 
         var PlayerName1=getStringPrefereces(DuetStartActivity.SHARED_NAME_PLAYER1)
         var PlayerName2=getStringPrefereces(DuetStartActivity.SHARED_NAME_PLAYER2)
@@ -45,16 +43,6 @@ class FinishActivity : AppCompatActivity() {
             var intent= Intent(applicationContext,MainActivity::class.java)
             startActivity(intent)
         }
-
-        ExitBtn!!.setOnClickListener {
-            exitProcess(0)
-        }
-
-
-
-
-
-
     }
 
     private fun setStringPreferences(key:String,name:String) {

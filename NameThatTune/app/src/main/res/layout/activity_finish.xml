@@ -36,10 +36,4 @@
         android:layout_height="wrap_content"
         android:text="Начать заново"
         android:layout_weight="0.5"/>
-    <Button
-        android:id="@+id/exit_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Выйти"
-        android:layout_weight="0.5"/>
 </LinearLayout>

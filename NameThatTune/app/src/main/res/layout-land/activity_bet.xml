@@ -92,7 +92,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:text="Сделать ставку!"
+            android:text="@string/do_bet_bet"
             android:layout_weight="1"/>
         <Button
             android:id="@+id/go_game"
@@ -102,7 +102,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:text="Начать игру"
+            android:text="@string/start_game"
             android:layout_weight="1"/>
     </LinearLayout>
 

@@ -17,6 +17,9 @@ class BetActivity : AppCompatActivity() {
         public val SHARED_POINT_PLAYER1 = "shared_point_player1"
         public val SHARED_POINT_PLAYER2 = "shared_point_player2"
         public val SHARED_BET_PLAYER2 = "shared_bet_player2"
+        public val KEY_READY_PLAYER1="key_ready_player1"
+        public val KEY_READY_PLAYER2="key_ready_player2"
+        public val KEY_FLAG="key_flag"
     }
 
     var k=0;
@@ -82,10 +85,19 @@ class BetActivity : AppCompatActivity() {
         BetCurrentPlayer=findViewById(R.id.bet_name_player) as TextView
         CurrentBet=findViewById(R.id.current_bet) as TextView
 
+        if (savedInstanceState != null) {
+            k = savedInstanceState.getInt(KEY_FLAG)
+            readyPl1=savedInstanceState.getInt(KEY_READY_PLAYER1)
+            readyPl2=savedInstanceState.getInt(KEY_READY_PLAYER2)
+        }
+
         if (k==0)
             Player1()
         else
             Player2()
+
+        if (readyPl1==1)   ReadyImgPlayer1!!.setBackgroundResource(R.drawable.ready)
+        if (readyPl2==1)   ReadyImgPlayer2!!.setBackgroundResource(R.drawable.ready)
 
         Sec3Btn!!.setOnClickListener {
                 current_bet = 3
@@ -208,4 +220,15 @@ class BetActivity : AppCompatActivity() {
             current_bet=getIntPrefereces(SHARED_BET_PLAYER2)
         CurrentBet!!.text=current_bet.toString()
     }
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+
+        if (outState != null) {
+            outState.putInt(KEY_FLAG,k)
+            outState.putInt(KEY_READY_PLAYER1,readyPl1)
+            outState.putInt(KEY_READY_PLAYER2,readyPl2)
+        }
+    }
+
 }
