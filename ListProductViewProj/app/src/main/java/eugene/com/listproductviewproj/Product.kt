@@ -14,18 +14,19 @@ import com.activeandroid.query.Update
  * Created by USER on 22.01.2017.
  */
 
-@Table(name = "Products")
+
 class Product():Model(){
-//:SugarRecord(){
-    //@Column(name="id",unique = true)
-    //var id=0
-    @Column(name="Name")
+
     var name="noName"
-    @Column(name="Description")
+
     var description="noDescription"
-    @Column(name="ImgID")
+
+    var textCategory = "Бытовая техника"
+
+    var decriptionCategory = "Техника для дома"
+
     var img=R.drawable.product
-    @Column (name="Price")
+
     var price=0
 
 
@@ -36,53 +37,19 @@ class Product():Model(){
         this.price=price
     }
 
-
-    companion object {
-        public fun queryNoteList(): List<Product> {
-            val modelList:List<Product> = Select().from(Product::class.java).execute()
-            return modelList
-        }
-
-        public fun queryById(id: Long): Product {
-            val model:Product = Select().from(Product::class.java).where("Id = ?", id).executeSingle()
-            return model;
-        }
-
-        public fun deleteById(id: Long): Product {
-            val model:Product = Delete().from(Product::class.java).where("Id = ?", id).executeSingle()
-            return model
-        }
-
-        public fun queryCount():Int{
-                val modelList:List<Product> = Select().from(Product::class.java).execute()
-                return modelList.size
-        }
-
-        public fun allDelete(){
-            val modelList:List<Product> = Select().from(Product::class.java).execute()
-            for (i in  1..modelList.size)
-            {
-                queryById(i.toLong())
-            }
-        }
-
-        public fun queryUpdateName(value:String,id:Long)
-        {
-            Update(Product::class.java)
-                    .set("Name = "+value)
-                    .where("Id = ?", id)
-                    .execute()
-        }
+    constructor(name:String,description:String,price:Int):this(){
+        this.name=name
+        this.description=description
+        this.price=price
     }
 
-
-
-    override fun equals(other: Any?): Boolean {
-        if (other !is Product) {
-            return false
-        }
-
-        val id = other.getId()
-        return id == this.getId()
+    constructor(name:String,description:String,category:String,categoryDesc:String,img:Int,price:Int):this(){
+        this.name=name
+        this.description=description
+        this.textCategory=category
+        this.decriptionCategory=categoryDesc
+        this.img=img
+        this.price=price
     }
+
 }

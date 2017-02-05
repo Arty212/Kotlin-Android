@@ -1,5 +1,6 @@
 package eugene.com.listproductviewproj
 
+import android.content.Context
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.support.v7.app.AppCompatActivity
@@ -11,56 +12,38 @@ import android.widget.Button
 import android.widget.TextView
 import com.activeandroid.ActiveAndroid
 import com.activeandroid.query.Delete
-
-//import com.orm.SugarDb
-
-
-
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
+    var data=ArrayList<Product>()
 
-    var products:Array<Product> = Array(10,{i-> Product() })
+    var names:Array<String> = arrayOf("Bosh","Gorenje","Ardo","Whirpool","Siemens")
+    var descriptions:Array<String> = arrayOf("Холодильник","Плита газовая", "Посудомоечная машина","Другой холодильник","Микроволновка")
+    var imgs:Array<Int> = arrayOf(R.drawable.fridge1,R.drawable.plita,R.drawable.dishwash,R.drawable.fridge2,R.drawable.fridge1)
+    var categors:Array<String> = arrayOf("Бытовая техника","Бытовая техника","Бытовая техника","Бытовая техника","Бытовая техника")
+    var categorsDesc:Array<String> = arrayOf("Техника для дома и всей семьи","Техника для дома и всей семьи","Техника для дома и всей семьи","Техника для дома и всей семьи","Техника для дома и всей семьи")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //Delete().from(Product::class.java).execute();
 
-        var countText=findViewById(R.id.count_text) as TextView
-        var afterCountText=findViewById(R.id.count_text2) as TextView
-        var LoadBtn=findViewById(R.id.load_btn) as Button
-
-        var names:Array<String> = arrayOf("Bosh","Gorenje","Ardo","Whirpool","Siemens")
-        var descriptions:Array<String> = arrayOf("Холодильник","Плита газовая", "Посудомоечная машина","Другой холодильник","Микроволновка")
-        var imgs:Array<Int> = arrayOf(R.drawable.fridge1,R.drawable.plita,R.drawable.dishwash,R.drawable.fridge2,R.drawable.fridge1)
-        if (Product.queryCount()!=0){
-            for (i in 0..4)
-            {
-                products[i]=Product.queryById((i+1).toLong())
+        DbHelper.initDbHelper(applicationContext)
+        if(DbHelper.getProducts().size==0)
+        {
+            DbHelper.deleteAll()
+            for (i in 0..4) {
+                data.add(Product(names[i], descriptions[i], categors[i],categorsDesc[i],imgs[i], 100))
             }
+            DbHelper.addProducts(data)
         }
-        else {
-            var names:Array<String> = arrayOf("Bosh","Gorenje","Ardo","Whirpool","Siemens")
-            var descriptions:Array<String> = arrayOf("Холодильник","Плита газовая", "Посудомоечная машина","Другой холодильник","Микроволновка")
-            var imgs:Array<Int> = arrayOf(R.drawable.fridge1,R.drawable.plita,R.drawable.dishwash,R.drawable.fridge2,R.drawable.fridge1)
-
-            for (i in 0..4)
-            {
-                var prod=Product(names[i],descriptions[i],imgs[i],10)
-                prod.save()
-                products[i]=prod
-            }
-
-
-        }
-
-
-
+        data=DbHelper.getProducts()
 
         var list=findViewById(R.id.list) as RecyclerView
-        list.layoutManager=LinearLayoutManager(this)
-        var adapter=MyAdapter()
+        list.layoutManager=LinearLayoutManager(applicationContext)
+
+        var adapter=MyAdapter(data)
+
         adapter.setOnProductClickAction {position->
             var intent= Intent(applicationContext,EditActivity::class.java)
 
@@ -68,29 +51,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
-
-        adapter.data=products
-        var count=adapter.itemCount
-        countText.text=Product.queryCount().toString()
-        //Product.allDelete()
-        afterCountText.text=Product.queryCount().toString()
         list.adapter=adapter
 
-        LoadBtn.setOnClickListener{
-            var names:Array<String> = arrayOf("Bosh","Gorenje","Ardo","Whirpool","Siemens")
-            var descriptions:Array<String> = arrayOf("Холодильник","Плита газовая", "Посудомоечная машина","Другой холодильник","Микроволновка")
-            var imgs:Array<Int> = arrayOf(R.drawable.fridge1,R.drawable.plita,R.drawable.dishwash,R.drawable.fridge2,R.drawable.fridge1)
-
-            for (i in 0..4){
-                var prod=Product(names[i],descriptions[i],imgs[i],10)
-                prod.save()
-            }
-
-            var intent= Intent(applicationContext,MainActivity::class.java)
-            startActivity(intent)
-        }
-
-
     }
+
+
+
+
 }

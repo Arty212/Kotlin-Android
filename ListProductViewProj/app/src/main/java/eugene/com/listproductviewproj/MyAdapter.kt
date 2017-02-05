@@ -12,13 +12,14 @@ import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import java.util.*
 
 /**
  * Created by USER on 22.01.2017.
  */
-class MyAdapter:RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+class MyAdapter(data:ArrayList<Product>):RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
-    var data:Array<Product> = arrayOf()
+    var data=data
 
     private var onProductClickAction: ((Int) -> Unit)? = null
 
@@ -43,6 +44,8 @@ class MyAdapter:RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
         holder.descriptionText.text = data[position].description.toString()
         holder.img.setImageResource(data[position].img)
         holder.priceText.text=data[position].price.toString()+"$"
+        holder.categoryText.text=data[position].textCategory
+        holder.categoryDesc.text=data[position].decriptionCategory
     }
 
 
@@ -54,6 +57,8 @@ class MyAdapter:RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
         var img: ImageView
         var editBtn: ImageButton
         var priceText: TextView
+        var categoryText: TextView
+        var categoryDesc: TextView
 
         init {
             nameText = view.findViewById(R.id.name_text) as TextView
@@ -61,6 +66,8 @@ class MyAdapter:RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
             img = view.findViewById(R.id.img) as ImageView
             priceText=view.findViewById(R.id.price_text) as TextView
             editBtn=view.findViewById(R.id.edit_btn) as ImageButton
+            categoryText=view.findViewById(R.id.category_text) as TextView
+            categoryDesc=view.findViewById(R.id.category_desc) as TextView
 
             if (onProductClickAction!=null)
                 editBtn.setOnClickListener {
