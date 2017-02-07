@@ -64,9 +64,9 @@ class EditActivity : AppCompatActivity() {
             if (catDesc.length!=0){
                 cv.put(DbHelper.DB_COLUMN_CATEGORY_DESC,catDesc)
             }
-
-            DbHelper.updateDate(position,cv)
-
+            if (cv.size()!=0) {
+                DbHelper.updateDate(position, cv)
+            }
             var intent= Intent(applicationContext,MainActivity::class.java)
             startActivity(intent)
         }
